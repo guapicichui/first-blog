@@ -279,6 +279,19 @@ a:hover {
   font-size: 14px;
 }
 
+.corner-motto {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 10;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+
 @media (max-width: 640px) {
   .nav {
     align-items: flex-start;
