@@ -274,13 +274,18 @@ code ~/.config/starship.toml
 我的自定义配置：
 
 ```toml
-format = "$conda$username$directory$git_branch$character"
+format = "$conda$python$username$directory$git_branch$character"
 add_newline = false
 
 [conda]
 format = '\([$environment]($style)\) '
 style = 'white'
 ignore_base = false
+
+[python]
+format = '\([$virtualenv]($style)\) '
+style = 'white'
+disabled = false
 
 [username]
 show_always = true
