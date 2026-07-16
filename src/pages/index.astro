@@ -1,11 +1,18 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>我的个人网站</title>
+    <meta name="description" content="个人博客与项目记录" />
+  </head>
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
----
+  <body>
+    <main>
+      <h1>我的个人网站</h1>
+      <p>这里记录技术、项目和学习笔记。</p>
 
-<Layout>
-	<Welcome />
-</Layout>
+      <nav>
+        <a href="/blog/">进入博客</a>
+      </nav>
+    </main>
+  </body>
+</html>

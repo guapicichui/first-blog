@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+})).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>博客</title>
+    <meta name="description" content="我的个人博客文章列表" />
+  </head>
+
+  <body>
+    <main>
+      <h1>博客</h1>
+
+      <ul>
+        {posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}/`}>
+              {post.data.title}
+            </a>
+            <p>{post.data.description}</p>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString("zh-CN")}
+            </time>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>
