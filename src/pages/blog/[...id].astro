@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => {
@@ -16,30 +17,30 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <title>{post.data.title}</title>
-    <meta name="description" content={post.data.description} />
-  </head>
+<BaseLayout title={`${post.data.title} | Wenhaoli Blog`} description={post.data.description}>
+  <article class="article">
+    <header class="article-header">
+      <a class="back-link" href="/blog/">← 返回博客列表</a>
 
-  <body>
-    <main>
-      <article>
-        <a href="/blog/">← 返回博客列表</a>
+      <h1>{post.data.title}</h1>
 
-        <h1>{post.data.title}</h1>
+      <p class="article-description">
+        {post.data.description}
+      </p>
 
-        <p>{post.data.description}</p>
-
+      <div class="post-meta">
         <time datetime={post.data.pubDate.toISOString()}>
           {post.data.pubDate.toLocaleDateString("zh-CN")}
         </time>
 
-        <hr />
+        {post.data.tags?.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    </header>
 
-        <Content />
-      </article>
-    </main>
-  </body>
-</html>
+    <div class="article-content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

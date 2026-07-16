@@ -1,18 +1,24 @@
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <title>我的个人网站</title>
-    <meta name="description" content="个人博客与项目记录" />
-  </head>
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
 
-  <body>
-    <main>
-      <h1>我的个人网站</h1>
-      <p>这里记录技术、项目和学习笔记。</p>
+<BaseLayout
+  title="Wenhaoli Blog"
+  description="记录机器人、ROS、Python、Linux 和个人工程笔记。"
+>
+  <section class="hero">
+    <div class="hero-kicker">Personal Engineering Notes</div>
 
-      <nav>
-        <a href="/blog/">进入博客</a>
-      </nav>
-    </main>
-  </body>
-</html>
+    <h1>记录工程实践、机器人系统与开发环境折腾笔记。</h1>
+
+    <p>
+      这里主要整理 ROS 2、机器人数据采集、Python、Linux、终端配置、
+      前后端工具链以及个人项目中的技术问题。
+    </p>
+
+    <div class="hero-actions">
+      <a class="button primary" href="/blog/">进入博客</a>
+      <a class="button secondary" href="/about/">了解我</a>
+    </div>
+  </section>
+</BaseLayout>

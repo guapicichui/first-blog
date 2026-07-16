@@ -1,35 +1,35 @@
 ---
 import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const posts = (await getCollection("blog", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 })).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <title>博客</title>
-    <meta name="description" content="我的个人博客文章列表" />
-  </head>
+<BaseLayout title="博客 | Wenhaoli Blog" description="个人技术博客文章列表。">
+  <section>
+    <h1 class="section-title">博客文章</h1>
 
-  <body>
-    <main>
-      <h1>博客</h1>
-
-      <ul>
-        {posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.id}/`}>
-              {post.data.title}
-            </a>
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <a class="post-card" href={`/blog/${post.id}/`}>
+            <h2>{post.data.title}</h2>
             <p>{post.data.description}</p>
-            <time datetime={post.data.pubDate.toISOString()}>
-              {post.data.pubDate.toLocaleDateString("zh-CN")}
-            </time>
-          </li>
-        ))}
-      </ul>
-    </main>
-  </body>
-</html>
+
+            <div class="post-meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString("zh-CN")}
+              </time>
+
+              {post.data.tags?.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

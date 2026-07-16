@@ -1,8 +1,8 @@
 ---
-title: "我的第一篇博客"
-description: "这是我用 Astro + Markdown 搭建的第一篇博客文章。"
-pubDate: 2026-07-08
-tags: ["Astro", "博客", "Markdown"]
+title: "Bash 终端配置文档"
+description: "使用 ble.sh、zoxide、starship 和 bash-completion 将 Bash 配置成接近 zsh 的使用体验。"
+pubDate: 2026-07-16
+tags: ["Linux", "Bash", "Terminal"]
 draft: false
 ---
 
